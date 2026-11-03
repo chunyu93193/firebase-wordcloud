@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f6f1" />
+    <meta name="description" content="一起寫下一個詞，讓想法即時匯聚成文字雲。" />
+    <title>詞光・即時文字雲</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="詞光首頁">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>詞光 <span class="brand-divider">/</span> WORD GARDEN</span>
+        </a>
+        <div class="live-indicator"><span class="live-dot"></span><span id="connection-label">正在連線</span></div>
+      </header>
+
+      <main>
+        <section class="intro">
+          <p class="eyebrow"><span>01</span> COLLECTIVE THOUGHTS</p>
+          <h1>讓每個詞，<br /><em>都有自己的光。</em></h1>
+          <p class="intro-copy">留下一個此刻浮現在心中的詞，看看大家的想法如何匯聚成一座雲。</p>
+        </section>
+
+        <section class="submit-card" aria-labelledby="form-title">
+          <div class="form-heading">
+            <span class="step-number">A</span>
+            <div><h2 id="form-title">寫下一個詞</h2><p>一個詞就好，讓直覺先說話。</p></div>
+          </div>
+          <form id="word-form">
+            <label class="sr-only" for="word-input">輸入一個詞</label>
+            <div class="input-row">
+              <input id="word-input" name="word" type="text" maxlength="32" placeholder="例如：靈感、午後、可能……" autocomplete="off" required />
+              <button id="submit-button" type="submit"><span>送出想法</span><span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="form-foot"><span id="form-message" role="status" aria-live="polite">請勿輸入姓名、電話等個人資料。</span><span><b id="char-count">0</b> / 32</span></div>
+          </form>
+        </section>
+
+        <section class="cloud-section" aria-labelledby="cloud-title">
+          <div class="section-head">
+            <div class="section-title-group">
+              <span class="step-number">B</span>
+              <div><h2 id="cloud-title">此刻的文字雲</h2><p>每一個詞，都是一份正在發生的想法。</p></div>
+            </div>
+            <div class="stats" aria-label="文字雲統計">
+              <div><strong id="word-total">—</strong><span>則回應</span></div>
+              <div><strong id="unique-total">—</strong><span>種詞語</span></div>
+            </div>
+          </div>
+          <div id="word-cloud" class="word-cloud" aria-live="polite" aria-label="即時文字雲">
+            <div class="cloud-loading"><span class="loader"></span><span>正在收集大家的想法…</span></div>
+          </div>
+          <div class="cloud-footer"><span>LIVE CANVAS</span><span>即時同步 · 最近 500 則回應</span></div>
+        </section>
+      </main>
+
+      <footer class="footer"><span>詞光 WORD GARDEN</span><span>讓想法相遇，讓共鳴成形。</span></footer>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

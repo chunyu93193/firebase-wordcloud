@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Public word-cloud demo: visitors can view and submit short words.
+    // Updates and deletes stay disabled.
+    match /wordcloud_words/{wordId} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['text', 'createdAt'])
+        && request.resource.data.keys().hasOnly(['text', 'createdAt'])
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0
+        && request.resource.data.text.size() <= 32
+        && request.resource.data.createdAt == request.time;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
